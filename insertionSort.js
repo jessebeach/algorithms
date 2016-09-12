@@ -24,16 +24,16 @@ function isort (arr) {
 
 var arr = [
   5,
-	10,
-	7,
-	8,
-	3,
-	9,
-	4,
-	2,
+  10,
+  7,
+  8,
+  3,
+  9,
+  4,
+  2,
   11,
   1,
-	6
+  6
 ]
 console.log(arr);
 var sorted = isort(arr);
