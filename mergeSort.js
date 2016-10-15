@@ -1,22 +1,28 @@
+"use strict";
+
 var colors = require('colors/safe');
 
 var start = Date.now();
 
-function msort (arr) {
+function msort (arr, level) {
+  level = level || 0;
   var midpoint = Math.floor(arr.length / 2);
   var left = arr.slice(0, midpoint);
   var right = arr.slice(midpoint);
   if (left.length > 1) {
-    left = msort(left);
+    left = msort(left, level + 1);
   }
   if (right.length > 1) {
-    right = msort(right);
+    right = msort(right, level + 1);
   }
+  var out = [];
+
   console.log(
+    colors.white(`LEVEL ${level}\n`),
+    colors.green.underline('[' + out + ']'),
     colors.cyan('[' + left + ']'),
     colors.yellow('[' + right + ']')
   );
-  var out = [];
   for (var i = j = k = 0, il = left.length + right.length; i < il; i++) {
     if (left[j] <= right[k]) {
       out[i] = left[j];
@@ -28,6 +34,11 @@ function msort (arr) {
       out[i] = left[j];
       j++;
     }
+    console.log(
+      colors.green.underline('[' + out + ']'),
+      colors.cyan('[' + left.slice(j) + ']'),
+      colors.yellow('[' + right.slice(k) + ']')
+    );
   }
   return out;
 }
@@ -39,13 +50,8 @@ var arr = [
 	7,
 	8,
 	3,
-	9,
-	4,
-	2,
-  11,
+  500,
   1,
-  3,
-	6
 ]
 console.log('original', arr);
 var sorted = msort(arr);
