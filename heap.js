@@ -100,7 +100,7 @@ input.forEach(x => minHeap.push(x));
 
 console.log('**** Remove 2 ****');
 minHeap.remove(2);
-console.log('**** Remove 2 ****');
+console.log('**** Remove 15 ****');
 minHeap.remove(15);
 console.log('**** Pop all ****');
 input.forEach(x => minHeap.pop());
